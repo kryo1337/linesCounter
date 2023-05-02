@@ -14,7 +14,8 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="10">
             <Button x:Name="addButton" Content="Add Files" Width="100" Margin="0 0 10 0" Click="addButton_Click"/>
-            <Button x:Name="clearButton" Content="Clear List" Width="100" Click="clearButton_Click"/>
+            <Button x:Name="deleteButton" Content="Delete File" Width="100" Margin="0 0 10 0" Click="deleteButton_Click"/>
+            <Button x:Name="clearButton" Content="Clear List" Width="100" Margin="0 0 10 0" Click="clearButton_Click"/>
         </StackPanel>
         <Grid Grid.Row="1" Margin="10">
             <Grid.ColumnDefinitions>

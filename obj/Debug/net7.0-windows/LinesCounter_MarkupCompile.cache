@@ -1,5 +1,5 @@
 ﻿LinesCounter
-1.0.0.0
+
 
 winexe
 C#
@@ -12,7 +12,7 @@ TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 X:\Programming\Visual Studio\LinesCounter\App.xaml
 11407045341
 
-5366682955
+3-1233169557
 1981827736222
 MainWindow.xaml;
 
