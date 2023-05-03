@@ -9,24 +9,24 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="10">
+        <ProgressBar x:Name="progressBar" Grid.Row="0" Margin="0 10" Height="20" Minimum="0" Maximum="100" Visibility="Hidden"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" Margin="10">
             <Button x:Name="addButton" Content="Add Files" Width="100" Margin="0 0 10 0" Click="addButton_Click"/>
             <Button x:Name="deleteButton" Content="Delete File" Width="100" Margin="0 0 10 0" Click="deleteButton_Click"/>
             <Button x:Name="clearButton" Content="Clear List" Width="100" Margin="0 0 10 0" Click="clearButton_Click"/>
         </StackPanel>
-        <Grid Grid.Row="1" Margin="10">
+        <Grid Grid.Row="2" Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <ListBox x:Name="fileList" Grid.Column="0" Margin="0 0 10 0"/>
-            <TextBox x:Name="outputBox" Grid.Column="2" Margin="10 0 0 0" IsReadOnly="True"/>
-            <ProgressBar x:Name="progressBar" Grid.Column="1" Margin="0 10" Height="20"/>
+            <ListBox x:Name="outputBox" Grid.Column="1" Margin="10 0 0 0"/>
         </Grid>
-        <Button x:Name="startButton" Content="Start" Grid.Row="2" Width="100" Margin="10" Click="startButton_Click"/>
+        <Button x:Name="startButton" Content="Start" Grid.Row="3" Width="100" Margin="10" Click="startButton_Click"/>
     </Grid>
 </Window>
