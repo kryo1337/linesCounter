@@ -118,7 +118,7 @@ namespace LinesCounter
             {
                 try
                 {
-                    string[] filesInDirectory = Directory.GetFiles(directory, $"*{fileFilter}", SearchOption.TopDirectoryOnly);
+                    string[] filesInDirectory = Directory.GetFiles(directory, $"*{fileFilter}", SearchOption.AllDirectories);
                     foreach (string file in filesInDirectory)
                     {
                         files.Add(file);
@@ -180,6 +180,10 @@ namespace LinesCounter
                 {
                     await Task.Run(() =>
                     {
+                        if (!isProcessing)
+                        {
+                            return;
+                        }
                         Parallel.ForEach(files, new ParallelOptions { CancellationToken = token }, file =>
                         {
                             try
@@ -199,15 +203,17 @@ namespace LinesCounter
                             }
                             catch (Exception ex)
                             {
-                                Dispatcher.Invoke(() =>
-                                {
-                                    outputBox.Items.Add($"{file} - ERROR: {ex.Message}");
-                                });
+                                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                             }
 
                             if (token.IsCancellationRequested)
                             {
-                                throw new OperationCanceledException(token);
+                                isProcessing = false;
+                                Dispatcher.Invoke(() =>
+                                {
+                                    outputBox.Items.Add("Processing canceled");
+                                    statusLabel.Content = "Processing canceled";
+                                });
                             }
                         });
                     });
@@ -226,7 +232,6 @@ namespace LinesCounter
                     startButton.Content = "Start";
                     Dispatcher.Invoke(() =>
                     {
-                        statusLabel.Content = "Done";
                         outputBox.Items.Add($"Total lines of code: {totalLines}");
                     });
                 }
