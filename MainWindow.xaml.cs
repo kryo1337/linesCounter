@@ -131,11 +131,6 @@ namespace LinesCounter
                     {
                         addedFiles += AddFilesRecursivelyAsync(subdirectory).Result;
                     }
-
-                    Dispatcher.Invoke(() =>
-                    {
-                        progressBar.Value = ((double)files.Count / (files.Count + addedFiles)) * 100;
-                    });
                 }
                 catch (Exception ex)
                 {
